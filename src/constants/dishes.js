@@ -1,0 +1,14 @@
+const dishes = [
+  { name: "Spring Rolls", image: "https://images.squarespace-cdn.com/content/v1/57a100f7e4fcb592ee30586c/1586191290821-1Q5F3BV5RX6H4WC95J4J/ke17ZwdGBToddI8pDm48kEic022QX1_IWmnU57mqJPp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcfuBOBz1nXaJJSDAljdvk53-8aMuOY97eNMyRW6U1RBFK4eMZgYA6RDahiKMr8qgw/IMG_4516.jpg" },
+  { name: "Beef Stroganoff", image: "https://img.buzzfeed.com/buzzfeed-static/static/2015-10/13/12/enhanced/webdr15/original-25116-1444752460-3.jpg" },
+  { name: "Cheesecake", image: "https://th.bing.com/th/id/OIP.qzwn97Rt2fZk7WXqh2p1NgHaKX?rs=1&pid=ImgDetMain" },
+  { name: "Grilled Salmon", image: "https://i.ytimg.com/vi/VTKx9f3wTRg/oardefault.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLBZ5mVQyaixQHiLzdDKt8tOEZ_7-Q" },
+  { name: "Vegetable Stir Fry", image: "https://images.squarespace-cdn.com/content/v1/57a100f7e4fcb592ee30586c/1586191290821-1Q5F3BV5RX6H4WC95J4J/ke17ZwdGBToddI8pDm48kEic022QX1_IWmnU57mqJPp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcfuBOBz1nXaJJSDAljdvk53-8aMuOY97eNMyRW6U1RBFK4eMZgYA6RDahiKMr8qgw/IMG_4516.jpg" },
+  { name: "Chicken Alfredo", image: "https://images.squarespace-cdn.com/content/v1/57a100f7e4fcb592ee30586c/1586191290821-1Q5F3BV5RX6H4WC95J4J/ke17ZwdGBToddI8pDm48kEic022QX1_IWmnU57mqJPp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcfuBOBz1nXaJJSDAljdvk53-8aMuOY97eNMyRW6U1RBFK4eMZgYA6RDahiKMr8qgw/IMG_4516.jpg" },
+  { name: "Tomato Soup", image: "https://images.squarespace-cdn.com/content/v1/57a100f7e4fcb592ee30586c/1586191290821-1Q5F3BV5RX6H4WC95J4J/ke17ZwdGBToddI8pDm48kEic022QX1_IWmnU57mqJPp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcfuBOBz1nXaJJSDAljdvk53-8aMuOY97eNMyRW6U1RBFK4eMZgYA6RDahiKMr8qgw/IMG_4516.jpg" },
+  { name: "Spaghetti Carbonarallllll", image: "https://images.squarespace-cdn.com/content/v1/57a100f7e4fcb592ee30586c/1586191290821-1Q5F3BV5RX6H4WC95J4J/ke17ZwdGBToddI8pDm48kEic022QX1_IWmnU57mqJPp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcfuBOBz1nXaJJSDAljdvk53-8aMuOY97eNMyRW6U1RBFK4eMZgYA6RDahiKMr8qgw/IMG_4516.jpg" },
+  { name: "Caesar Salad", image: "https://images.squarespace-cdn.com/content/v1/57a100f7e4fcb592ee30586c/1586191290821-1Q5F3BV5RX6H4WC95J4J/ke17ZwdGBToddI8pDm48kEic022QX1_IWmnU57mqJPp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcfuBOBz1nXaJJSDAljdvk53-8aMuOY97eNMyRW6U1RBFK4eMZgYA6RDahiKMr8qgw/IMG_4516.jpg" }
+];
+
+
+export default dishes

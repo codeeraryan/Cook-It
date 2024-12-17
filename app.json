@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "StepTracker",
-    "slug": "StepTracker",
+    "name": "Cook it",
+    "slug": "Cook it",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/welcomee.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
