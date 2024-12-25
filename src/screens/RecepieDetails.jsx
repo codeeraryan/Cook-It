@@ -13,13 +13,14 @@ import Loader from '../components/Loader';
 import CookingDetails from '../components/CookingDetails';
 import YoutubeIframe from 'react-native-youtube-iframe';
 import Animated from 'react-native-reanimated';
+import { useTheme } from '../context/ThemeContext';
 const RecepieDetails = (props) => {
     const item =props.route.params;
     const [fav,setFav]=useState(false);
     const [load,setLoad]=useState(true);
     const [mealData,setMealData]=useState(null);
     const navigation=useNavigation();
-  
+    const {theme}=useTheme();
  useEffect(()=>{getDetailedRecepies(item.idMeal);},[])
     const getDetailedRecepies=async(id)=>{
         try{
@@ -55,7 +56,7 @@ return null
 }
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} style={tailwind`bg-[${theme.background}] text-[${theme.text}]`} >
         <View  style={tailwind`h-100 overflow-hidden p-2`}>
             <Image style={tailwind`h-[100%] w-full rounded-8 mt-0 pt-0`} source={{uri:item?.strMealThumb}}/>
         </View>
@@ -71,8 +72,8 @@ return null
         <View style={tailwind`px-4 pt-6`}>
 
         <Animated.View entering={FadeInDown.duration(700).springify().damping(12)} style={tailwind`gap-2 py-2`}>
-          <Text style={tailwind`text-xl font-semibold`}>{item?.strMeal}</Text>
-          <Text>{mealData.strArea}</Text>
+          <Text style={tailwind`text-xl font-semibold text-[${theme.text}]`}>{item?.strMeal}</Text>
+          <Text style={tailwind`text-[${theme.text}]`}>{mealData.strArea}</Text>
         </Animated.View>
 
       <Animated.View entering={FadeInDown.delay(100).duration(700).springify().damping(12)} style={tailwind`flex-row gap-3 p-1`}>  
@@ -83,7 +84,7 @@ return null
       </Animated.View>
 
       <Animated.View entering={FadeInDown.delay(300).duration(700).springify().damping(12)} >
-        <Text style={tailwind`text-xl font-semibold py-4`}>
+        <Text style={tailwind`text-xl font-semibold py-4 text-[${theme.text}]`}>
         Ingredients :
         </Text>
     
@@ -91,9 +92,9 @@ return null
   return (
     <View key={i} style={tailwind`flex-row gap-2 p-1`}>
       <View style={tailwind`h-4 w-4 bg-amber-500 rounded-full`}/>
-      <View style={tailwind`flex-row gap-2`}>
-        <Text style={tailwind`font-semibold`}>{mealData['strMeasure'+i]},</Text>
-        <Text>{mealData['strIngredient'+i]}</Text>
+      <View style={tailwind`flex-row gap-2 `}>
+        <Text style={tailwind`font-semibold text-[${theme.text}]`}>{mealData['strMeasure'+i]},</Text>
+        <Text style={tailwind`text-[${theme.text}]`}>{mealData['strIngredient'+i]}</Text>
       </View>
     </View>
 
@@ -109,15 +110,15 @@ return null
   {/* instructions */}
 
       <View style={tailwind`p-4`}>
-        <Text style={tailwind`text-xl font-semibold py-2 `}>
+        <Text style={tailwind`text-xl font-semibold py-2 text-[${theme.text}]`}>
         Instructions:
         </Text>
-        <Text style={tailwind`p-1`}>{mealData?.strInstructions}</Text>
+        <Text style={tailwind`p-1 text-[${theme.text}]`}>{mealData?.strInstructions}</Text>
       </View>
 
      {/* yt video */}
    { mealData?.strYoutube && <View style={tailwind`p-4`}>
-        <Text style={tailwind`text-xl font-semibold py-2 `}>
+        <Text style={tailwind`text-xl font-semibold py-2 text-[${theme.text}]`}>
         Recepie Video:
         </Text>
         <View>

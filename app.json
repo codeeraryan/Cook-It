@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Cook it",
-    "slug": "Cook it",
+    "name": "cookit",
+    "slug": "cookit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/welcomee.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/welcomee.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,12 +17,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/welcomee.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.aryanpandey0326.cookit"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/welcomee.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7139ff85-ce49-4aa2-813b-06c7fb3ab2fa"
+      }
+    },
+    "owner": "aryanpandey0326"
   }
 }
