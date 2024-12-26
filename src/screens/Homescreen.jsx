@@ -10,13 +10,13 @@ import axios from 'axios';
 import Recepies  from '../components/recepies';
 import { useTheme } from '../context/ThemeContext';
 
-export default function Homescreen() {
+export default function Homescreen({navigation}) {
   const [cat,setCat]=useState('Beef');
   const [categories,setCategories]=useState([]);
   const [recepie,setRecepie]=useState([]);
   const [dark,setDark]=useState(false);
  
-  const {isDark,setIsDark,toggleSetTheme,theme}=useTheme();
+  const {isDark,setIsDark,toggleSetTheme,theme,profileImage}=useTheme();
 
 
   useEffect(()=>{getCategories(),getRecepies(cat)},[cat])
@@ -49,7 +49,7 @@ export default function Homescreen() {
       <ScrollView stickyHeaderIndices={[3]}>
 {/* //TopIcons , profile and bell */}  
       <View style={tailwind`flex flex-row justify-between p-4 items-center `}>
-      <View style={tailwind`bg-blue-200 w-10  rounded-full flex justify-center items-center `}><Image style={{height:hp(5),width:wp(5.5)}} source={require('../../assets/welcomee.png')}/></View>
+  <Pressable onPress={()=>navigation.navigate('Profile')}><View  style={tailwind`items-center h-13 w-13 rounded-full overflow-hidden border-[1px] border-[${theme.text}] `}><Image  source={profileImage ? { uri: profileImage } : require('../../assets/welcomee.png')} style={tailwind`h-[100%] w-[100%] `}/></View></Pressable>
       <View style={tailwind`flex-row gap-4`}><Pressable  onPress={()=>{toggleSetTheme()}}>{isDark?<MoonIcon style={{height:hp(5),width:wp(5.5)}} color={"gray"}/>:<SunIcon style={{height:hp(5),width:wp(5.5)}} color={"white"} />}</Pressable><BellIcon style={{height:hp(5),width:wp(5.5)}} color="gray" /></View>
       </View>
 {/* //greetings */}
@@ -59,11 +59,11 @@ export default function Homescreen() {
       </View>
 {/* //searchbar */}
       <View style={tailwind`space-y-2 mx-4 my-1 mb-4 bg-black/5 rounded-full border-white border-[0.5px] p-2 flex-row justify-between items-center`}>
-         <TextInput style={tailwind`h-full w-[80%]`} placeholder='Search recepie !' placeholderTextColor={'gray'}/>
+         <TextInput style={tailwind`h-full w-[80%] text-[${theme.text}] `} placeholder='Search recepie !' placeholderTextColor={'gray'}/>
          <View style={tailwind`bg-white rounded-full p-2`}><MagnifyingGlassIcon style={{height:hp(4),width:wp(4.5)}} color={'gray'}/></View>
       </View>
 {/* //categories */}
-      <View style={{backgroundColor:theme.background,height:hp(14),color:theme.text}}>
+      <View style={{backgroundColor:theme.background,height:hp(14),color:theme.text,borderRadius:2,borderColor:theme.text}}>
        {categories.length>0 && <Categories categories={categories} Category={cat} setCategory={setCat}/>}
       </View>
 {/* //recepies */}
