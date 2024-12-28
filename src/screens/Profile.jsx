@@ -1,71 +1,43 @@
-import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import React, { useState ,useEffect} from 'react';
+import { View, Text, Image, TouchableOpacity, Pressable} from 'react-native';
 import { useTheme } from '../context/ThemeContext';
-const Profile = () => {
+import { useFirebase } from '../context/FirebaseContext';
+import tailwind from 'twrnc';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ChatBubbleOvalLeftEllipsisIcon, ChevronLeftIcon, HeartIcon } from 'react-native-heroicons/solid';
+import { BellIcon } from 'react-native-heroicons/solid';
+import { BiHelpCircle } from 'react-icons/bi';
+import { ArrowRightStartOnRectangleIcon, ChevronRightIcon, Cog6ToothIcon, UserIcon } from 'react-native-heroicons/outline';
+const Profile = ({navigation}) => {
+  useEffect(()=>{isLogin?null:navigation.navigate("Auth")},[isLogin]);
+  const {logOutUser,userEmail,isLogin}=useFirebase();
+  const insets=useSafeAreaInsets();
+  const handleLogOut=()=>{logOutUser();navigation.navigate("Auth")}
 
-  const {profileImage,setProfileImage}=useTheme();
-  // Function to pick an image
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes:["images"],
-      allowsEditing: true,
-      aspect: [1, 1], // Square aspect ratio
-      quality: 1,
-    });
-console.log(result);
-    if (!result.canceled) {
-      setProfileImage(result.assets[0].uri); // Set the selected image URI
-    }
-  };
+  
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>User Profile</Text>
-      <View style={styles.imageContainer}>
-        <Image
-          source={profileImage ? { uri: profileImage } : require('../../assets/welcomee.png')} // Default profile image
-          style={styles.profileImage}
-        />
-        <TouchableOpacity style={styles.changeImageButton} onPress={pickImage}>
-          <Text style={styles.changeImageText}>Change Image</Text>
-        </TouchableOpacity>
+    <View style={{flex:1,paddingTop:insets.top}}>
+     <View style={tailwind`flex-row w-full items-center py-1 gap-25 `}><TouchableOpacity onPress={()=>navigation.goBack()} style={tailwind`ml-4 p-2 bg-amber-500 rounded-full`}><ChevronLeftIcon onPress={()=>navigation.goBack()} size={30} color={'white'}/></TouchableOpacity><Text style={tailwind`text-xl w-full  font-semibold`}>Profile</Text></View>
+      <View style={tailwind`justify-center items-center p-10`}>
+        <View style={tailwind`h-30 w-30`}><Image style={tailwind`h-[100%] w-[100%]`} source={require('../../assets/welcomee.png')}/></View>
+        <Text style={tailwind`text-xl font-semibold`}>User123</Text>
+        <Text style={tailwind`pt-2`}>{userEmail.email}</Text>
       </View>
+
+      <View style={tailwind`flex flex-row justify-between px-5`}>
+      <View style={tailwind`h-25 w-25 bg-gray-200 items-center justify-center rounded-3xl`}><BellIcon color={'#34c4ef'}/><Text>Notification</Text></View>
+      <View style={tailwind`h-25 w-25 bg-gray-200  items-center justify-center rounded-3xl`}><ChatBubbleOvalLeftEllipsisIcon color={'#34ef34'}/><Text>Help!</Text></View>
+      <View style={tailwind`h-25 w-25 bg-gray-200  items-center justify-center rounded-3xl`}><HeartIcon color={'red'}/><Text>Favourites</Text></View>
+      </View>
+
+      <View style={tailwind`p-3 pt-10 gap-5`}>
+      <TouchableOpacity onPress={()=>navigation.navigate("MyProfile")} style={tailwind`p-4 bg-gray-200 items-center justify-center rounded-3xl flex-row justify-between`}><View style={tailwind`flex-row gap-4`}><UserIcon color={'gray'}/><Text>My Profile</Text></View><ChevronRightIcon color={'gray'}/></TouchableOpacity>
+      <View style={tailwind`p-4 bg-gray-200 items-center justify-center rounded-3xl flex-row justify-between`}><View style={tailwind`flex-row gap-4`}><Cog6ToothIcon color={'gray'}/><Text>Notification Setting</Text></View><ChevronRightIcon color={'gray'}/></View>
+      <TouchableOpacity onPress={()=>handleLogOut()} style={tailwind`p-4 bg-gray-200 items-center justify-center rounded-3xl flex-row justify-between`}><View style={tailwind`flex-row gap-4`}><ArrowRightStartOnRectangleIcon color={'red'}/><View ><Text>Log Out</Text></View></View></TouchableOpacity>
+      </View>
+
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f5f5f5',
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  imageContainer: {
-    alignItems: 'center',
-  },
-  profileImage: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    marginBottom: 15,
-  },
-  changeImageButton: {
-    backgroundColor: '#007BFF',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  changeImageText: {
-    color: '#fff',
-    fontSize: 16,
-  },
-});
-
 export default Profile;

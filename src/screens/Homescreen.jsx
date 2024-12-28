@@ -10,7 +10,7 @@ import axios from 'axios';
 import Recepies  from '../components/recepies';
 import { useTheme } from '../context/ThemeContext';
 
-export default function Homescreen({navigation}) {
+export default function Homescreen({navigation}) {  
   const [cat,setCat]=useState('Beef');
   const [categories,setCategories]=useState([]);
   const [recepie,setRecepie]=useState([]);
@@ -45,7 +45,7 @@ export default function Homescreen({navigation}) {
     }
   }
   return (
-    <SafeAreaView style={tailwind`bg-[${theme.background}] text-[${theme.text}]`}>
+    <SafeAreaView style={tailwind`flex-1 bg-[${theme.background}] text-[${theme.text}]`}>
       <ScrollView stickyHeaderIndices={[3]}>
 {/* //TopIcons , profile and bell */}  
       <View style={tailwind`flex flex-row justify-between p-4 items-center `}>
@@ -68,7 +68,7 @@ export default function Homescreen({navigation}) {
       </View>
 {/* //recepies */}
 <View>
-<Text style={tailwind`text-xl font-semibold mx-4 mt-8 ${dark?`text-white`:`text-gray`}`}>Recepies</Text>
+<Text style={tailwind`text-xl font-semibold mx-4 mt-8 text-[${theme.text}]`}>Recepies</Text>
 <Recepies recepie={recepie}/>
 </View>
       <StatusBar style={`${dark?"light":"dark"}`} />

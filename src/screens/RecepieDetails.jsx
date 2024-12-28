@@ -56,8 +56,8 @@ return null
 }
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={tailwind`bg-[${theme.background}] text-[${theme.text}]`} >
-        <View  style={tailwind`h-100 overflow-hidden p-2`}>
+    <ScrollView showsVerticalScrollIndicator={false} style={tailwind`flex-1 bg-[${theme.background}] text-[${theme.text}]`} >
+        <View  style={tailwind`h-100 overflow-hidden bg-[${theme.background}] p-2`}>
             <Image style={tailwind`h-[100%] w-full rounded-8 mt-0 pt-0`} source={{uri:item?.strMealThumb}}/>
         </View>
          {/* back button and like button */}

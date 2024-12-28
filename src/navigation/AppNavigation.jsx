@@ -1,23 +1,26 @@
 
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
+import {DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Homescreen from '../screens/Homescreen';
 import Welcome from '../screens/Welcome';
 import RecepieDetails from '../screens/RecepieDetails';
 import Profile from '../screens/Profile';
- 
+import Authentication from '../screens/Authentication';
+import MyProfile from '../screens/MyProfile'
 const Stack=createNativeStackNavigator();
 
  const AppNavigation=()=> {
    
   return (
-   <NavigationContainer>
-    <Stack.Navigator initialRouteName='Splash' screenOptions={{headerShown:false}}>
-        <Stack.Screen name='Home' component={Homescreen}/>
+   <NavigationContainer  >
+    <Stack.Navigator initialRouteName='Splash'  screenOptions={{headerShown:false,animation:'slide_from_bottom'}}>
+        <Stack.Screen  name='Home' component={Homescreen}/>
         <Stack.Screen name='Splash' component={Welcome}/>
         <Stack.Screen name='RecepieDetails' component={RecepieDetails}/>
         <Stack.Screen name='Profile' component={Profile}/>
+        <Stack.Screen name='Auth' component={Authentication}/>
+        <Stack.Screen name='MyProfile' component={MyProfile}/>
     </Stack.Navigator>
    </NavigationContainer>
   )
