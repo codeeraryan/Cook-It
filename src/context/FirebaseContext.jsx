@@ -3,8 +3,9 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sig
 import {createContext, useContext, useState} from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ToastAndroid } from "react-native";
+import { API_Key } from "../../config";
 const firebaseConfig = {
-  apiKey: "AIzaSyDN3beHn93zbjTR4BnrPREGhCb8bljS23I",
+  apiKey: API_Key,
   authDomain: "letscookiit.firebaseapp.com",
   projectId: "letscookiit",
   storageBucket: "letscookiit.firebasestorage.app",
@@ -19,47 +20,44 @@ const auth = getAuth(app);
 
 export const FirebaseProvider = ({children}) => {
 
-
-
-  const [isLogin,
-    setIsLogin] = useState(false);
   const [email,
     SetEmail] = useState("")
   const [Pass,
     SetPass] = useState("")
   const [userEmail,
-    setUserEmail] = useState("")
+    setUserEmail] = useState(null)
 
-    const registerUser = async(email, Pass) => {
+    const registerUser = async(email, Pass,navigation) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, Pass);
       console.log("user registered : ", userCredential.user)
       ToastAndroid.show("Registered", ToastAndroid.SHORT, ToastAndroid.CENTER)
-      setIsLogin(true);
       setUserEmail(userCredential.user)
+      navigation.navigate("Home")
     } catch (error) {
       console.error('Error registering:', error.message);
     }
   };
 
-  const loginUser = async(email, Pass) => {
+  const loginUser = async(email, Pass,navigation) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, Pass);
       console.log('User logged in:', userCredential.user);
       ToastAndroid.show("Logged In", ToastAndroid.SHORT, ToastAndroid.CENTER)
-      setIsLogin(true);
       setUserEmail(userCredential.user);
+      navigation.navigate("Home")
     } catch (error) {
       console.error('Error logging in:', error.message);
     }
   };
 
-  const logOutUser = async() => {
+  const logOutUser = async(navigation) => {
     try {
       await signOut(auth);
       console.log('User signed out successfully');
       ToastAndroid.show("Logged Out", ToastAndroid.SHORT, ToastAndroid.CENTER)
-      setIsLogin(false);
+      setUserEmail(prev=>null);
+      navigation.navigate("Auth")
       
     } catch (error) {
       console.error('Error signing out:', error.message);
@@ -71,8 +69,6 @@ export const FirebaseProvider = ({children}) => {
       value={{
       registerUser,
       loginUser,
-      isLogin,
-      setIsLogin,
       logOutUser,
       email,
       Pass,

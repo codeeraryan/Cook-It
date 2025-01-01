@@ -16,9 +16,9 @@ export default function Homescreen({navigation}) {
   const [recepie,setRecepie]=useState([]);
   const [dark,setDark]=useState(false);
  
-  const {isDark,setIsDark,toggleSetTheme,theme,profileImage}=useTheme();
+  const {isDark,setIsDark,toggleSetTheme,theme,profileImage,userEmail}=useTheme();
 
-
+  // useEffect(()=>userEmail?null:navigation.replace("Auth"),[userEmail])
   useEffect(()=>{getCategories(),getRecepies(cat)},[cat])
 
   const getCategories=async()=>{

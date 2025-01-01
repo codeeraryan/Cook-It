@@ -8,10 +8,11 @@ import RecepieDetails from '../screens/RecepieDetails';
 import Profile from '../screens/Profile';
 import Authentication from '../screens/Authentication';
 import MyProfile from '../screens/MyProfile'
+import { useFirebase } from '../context/FirebaseContext';
 const Stack=createNativeStackNavigator();
 
  const AppNavigation=()=> {
-   
+ 
   return (
    <NavigationContainer  >
     <Stack.Navigator initialRouteName='Splash'  screenOptions={{headerShown:false,animation:'slide_from_bottom'}}>

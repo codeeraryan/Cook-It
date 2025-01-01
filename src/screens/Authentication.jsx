@@ -15,16 +15,15 @@ import tailwind from 'twrnc';
 const Authentication = ({navigation}) => {
   const insets = useSafeAreaInsets();
   const [active, setActive] = useState(true);
- const {registerUser,loginUser,isLogin,email,SetEmail,Pass,SetPass}=useFirebase();
+ const {registerUser,loginUser,email,SetEmail,Pass,SetPass,userEmail}=useFirebase();
 
-useEffect(()=>{isLogin?navigation.navigate("Home"):null},[isLogin]);
   
     const handleRegister=()=>{
-      registerUser(email,Pass);
+      registerUser(email,Pass,navigation);
       
     }
     const handleLogin=()=>{
-      loginUser(email,Pass);
+      loginUser(email,Pass,navigation);
       
     }
   return (

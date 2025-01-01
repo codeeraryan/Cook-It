@@ -9,13 +9,13 @@ import { useFirebase } from '../context/FirebaseContext'
 
 
 export default function Welcome({navigation}) {
-const {isLogin}=useFirebase();
+const {userEmail}=useFirebase();
 const ring1padding=useSharedValue(0);
 const ring2padding=useSharedValue(0);
   useEffect(()=>{
     setTimeout(() => {  ring1padding.value=withSpring(ring1padding.value+hp(5)) },100);
     setTimeout(() => {  ring2padding.value=withSpring(ring2padding.value+hp(5.5)) },300);
-   isLogin? setTimeout(() => {  navigation.navigate("Home") },2500):setTimeout(() => {  navigation.navigate("Auth") },2500);
+   userEmail? setTimeout(() => {  navigation.navigate("Home") },2500):setTimeout(() => {  navigation.navigate("Auth") },2500);
 },[])
   return (
     <SafeAreaView style={tailwind`bg-amber-500 flex-1 justify-center items-center  gap-10`}>
