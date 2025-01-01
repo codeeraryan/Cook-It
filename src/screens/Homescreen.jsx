@@ -9,6 +9,7 @@ import Categories from '../components/categories';
 import axios from 'axios';
 import Recepies  from '../components/recepies';
 import { useTheme } from '../context/ThemeContext';
+import { useFirebase } from '../context/FirebaseContext';
 
 export default function Homescreen({navigation}) {  
   const [cat,setCat]=useState('Beef');
@@ -16,8 +17,8 @@ export default function Homescreen({navigation}) {
   const [recepie,setRecepie]=useState([]);
   const [dark,setDark]=useState(false);
  
-  const {isDark,setIsDark,toggleSetTheme,theme,profileImage,userEmail}=useTheme();
-
+  const {isDark,setIsDark,toggleSetTheme,theme,profileImage,userEmail,userDetail}=useTheme();
+  
   // useEffect(()=>userEmail?null:navigation.replace("Auth"),[userEmail])
   useEffect(()=>{getCategories(),getRecepies(cat)},[cat])
 
@@ -54,7 +55,7 @@ export default function Homescreen({navigation}) {
       </View>
 {/* //greetings */}
       <View style={tailwind`space-y-2 mx-4 my-1 mb-4 `}>
-        <View><Text style={tailwind` text-[${theme.text}]`}>Hey, Aryan😊</Text></View>
+        <View><Text style={tailwind` text-[${theme.text}]`}>Hey, {userDetail.firstName?userDetail.firstName:"userXYZ"}😊</Text></View>
         <View style={tailwind`flex-row mt-2`}><Text style={tailwind` text-xl font-semibold text-[${theme.text}]`}>What would You Like To </Text><Text style={tailwind`text-xl text-amber-500  font-semibold`}>Cook ?</Text></View>
       </View>
 {/* //searchbar */}
