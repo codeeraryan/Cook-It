@@ -11,13 +11,14 @@ export const ThemeProvider = ({children}) => {
     const [theme,setTheme]=useState(themes.light);
     const [profileImage, setProfileImage] = useState(null);
     const [userDetail, setUserDetail] = useState({});
+    const [userFav, setUserFav] = useState([]);
  useEffect(()=>{toggleSetTheme()},[]);
   const   toggleSetTheme=()=>{
       setIsDark(prev=>!prev);
      setTheme(isDark?themes.dark:themes.light);
     }
   return (
-   <ThemeContext.Provider value={{isDark,setIsDark,toggleSetTheme,theme,profileImage,setProfileImage,userDetail,setUserDetail}}>{children}</ThemeContext.Provider>
+   <ThemeContext.Provider value={{isDark,setIsDark,toggleSetTheme,theme,profileImage,setProfileImage,userDetail,setUserDetail,userFav,setUserFav}}>{children}</ThemeContext.Provider>
   )
 }
 

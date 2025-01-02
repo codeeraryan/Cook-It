@@ -18,7 +18,7 @@ const Recepies = ({recepie}) => {
       <View>
       {recepie.length==0?<Loader style={tailwind`mt-20`} size="large"/>:<MasonryList
         data={recepie}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.idMeal}
         numColumns={2}
         showsVerticalScrollIndicator={false}
         renderItem={({item,i}) => <RecepieCard item={item} index={i} navigation={navigation} />}

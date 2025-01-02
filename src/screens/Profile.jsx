@@ -27,7 +27,7 @@ const Profile = ({navigation}) => {
       <View style={tailwind`flex flex-row justify-between px-5`}>
       <View style={tailwind`h-25 w-25 bg-gray-200 items-center justify-center rounded-3xl`}><BellIcon color={'#34c4ef'}/><Text>Notification</Text></View>
       <View style={tailwind`h-25 w-25 bg-gray-200  items-center justify-center rounded-3xl`}><ChatBubbleOvalLeftEllipsisIcon color={'#34ef34'}/><Text>Help!</Text></View>
-      <View style={tailwind`h-25 w-25 bg-gray-200  items-center justify-center rounded-3xl`}><HeartIcon color={'red'}/><Text>Favourites</Text></View>
+      <TouchableOpacity onPress={()=>navigation.navigate("fav")} style={tailwind`h-25 w-25 bg-gray-200  items-center justify-center rounded-3xl`}><HeartIcon color={'red'}/><Text>Favourites</Text></TouchableOpacity>
       </View>
 
       <View style={tailwind`p-3 pt-10 gap-5`}>

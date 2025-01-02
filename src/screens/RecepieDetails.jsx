@@ -20,7 +20,7 @@ const RecepieDetails = (props) => {
     const [load,setLoad]=useState(true);
     const [mealData,setMealData]=useState(null);
     const navigation=useNavigation();
-    const {theme}=useTheme();
+    const {theme,userFav,setUserFav}=useTheme();
  useEffect(()=>{getDetailedRecepies(item.idMeal);},[])
     const getDetailedRecepies=async(id)=>{
         try{
@@ -63,7 +63,7 @@ return null
          {/* back button and like button */}
          <Animated.View entering={FadeIn.delay(200).duration(1000)} style={tailwind`w-full absolute flex-row justify-between p-8`}>
             <TouchableOpacity onPress={()=>navigation.goBack()} style={tailwind`bg-white p-2 rounded-full`}><ChevronLeftIcon color="#fbbf24" size={hp(3.5)} strokeWidth={4.5} /></TouchableOpacity>
-            <TouchableOpacity onPress={()=>setFav((prev)=>!prev)} style={tailwind`bg-white p-2 rounded-full`}><HeartIcon color={fav?"red":"gray"} size={hp(3.5)} strokeWidth={4.5} /></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{setFav((prev)=>!prev);console.log(item);setUserFav((prev)=>{return [...prev, { ...item }]});console.log(userFav)}} style={tailwind`bg-white p-2 rounded-full`}><HeartIcon color={fav?"red":"gray"} size={hp(3.5)} strokeWidth={4.5} /></TouchableOpacity>
          </Animated.View>
 
           {/* mealDescription */}
