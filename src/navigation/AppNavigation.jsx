@@ -10,6 +10,7 @@ import Authentication from '../screens/Authentication';
 import MyProfile from '../screens/MyProfile'
 import { useFirebase } from '../context/FirebaseContext';
 import Favourites from '../screens/Favourites';
+import SearchedItem from '../screens/SearchedItem';
 const Stack=createNativeStackNavigator();
 
  const AppNavigation=()=> {
@@ -24,6 +25,7 @@ const Stack=createNativeStackNavigator();
         <Stack.Screen name='Auth' component={Authentication}/>
         <Stack.Screen name='MyProfile' component={MyProfile}/>
         <Stack.Screen name='fav' component={Favourites}/>
+        <Stack.Screen name='SearchedItem' component={SearchedItem}/>
     </Stack.Navigator>
    </NavigationContainer>
   )

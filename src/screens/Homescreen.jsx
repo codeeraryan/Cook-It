@@ -1,4 +1,4 @@
-import {  Text, View,StyleSheet,Image, TextInput,ScrollView, Button, Pressable } from 'react-native'
+import {  Text, View,StyleSheet,Image, TextInput,ScrollView, Button, Pressable, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -16,6 +16,7 @@ export default function Homescreen({navigation}) {
   const [categories,setCategories]=useState([]);
   const [recepie,setRecepie]=useState([]);
   const [dark,setDark]=useState(false);
+  const [searchValue,setSearchValue]=useState(null);
  
   const {isDark,setIsDark,toggleSetTheme,theme,profileImage,userEmail,userDetail}=useTheme();
   
@@ -60,8 +61,8 @@ export default function Homescreen({navigation}) {
       </View>
 {/* //searchbar */}
       <View style={tailwind`space-y-2 mx-4 my-1 mb-4 bg-black/5 rounded-full border-white border-[0.5px] p-2 flex-row justify-between items-center`}>
-         <TextInput style={tailwind`h-full w-[80%] text-[${theme.text}] `} placeholder='Search recepie !' placeholderTextColor={'gray'}/>
-         <View style={tailwind`bg-white rounded-full p-2`}><MagnifyingGlassIcon style={{height:hp(4),width:wp(4.5)}} color={'gray'}/></View>
+         <TextInput onChangeText={setSearchValue} style={tailwind`h-full w-[80%] text-[${theme.text}] `} placeholder='Search recepie !' placeholderTextColor={'gray'}/>
+     <TouchableOpacity onPress={()=>navigation.navigate("SearchedItem",recepie.filter((value)=>value.strMeal.includes(searchValue)))}><View style={tailwind`bg-white rounded-full p-2`}><MagnifyingGlassIcon style={{height:hp(4),width:wp(4.5)}} color={'gray'}/></View></TouchableOpacity>
       </View>
 {/* //categories */}
       <View style={{backgroundColor:theme.background,height:hp(14),color:theme.text,borderRadius:2,borderColor:theme.text}}>
