@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext'
 import tailwind from 'twrnc'
 import { ArrowLeftIcon } from 'react-native-heroicons/outline'
 import { TouchableOpacity } from 'react-native'
+import { XMarkIcon } from 'react-native-heroicons/solid'
 
 const Favourites = ({navigation}) => {
     const insets=useSafeAreaInsets();
@@ -14,7 +15,7 @@ const Favourites = ({navigation}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={{paddingTop:insets.top,backgroundColor:theme.background}}>
    <View style={tailwind`flex-row w-full items-center py-4 gap-25 `}><TouchableOpacity onPress={()=>navigation.goBack()} style={tailwind`ml-4 p-2 bg-amber-500 rounded-full`}><ArrowLeftIcon onPress={()=>navigation.goBack()} size={20} color={'white'}/></TouchableOpacity><Text style={tailwind`text-xl w-full text-[${theme.text}]  font-semibold`}>Favourites</Text></View>
-    {userFav[0]==null?<View style={tailwind`h-full justify-center items-center `}><Image style={{height:250,width:250}} source={require("../../assets/noFav.png")}/><Text style={tailwind`text-[${theme.text}]`}>No Favourites</Text></View>:<Recepies recepie={userFav}/>}
+    {userFav[0]==null?<View style={tailwind`h-full justify-center items-center `}><Image style={{height:250,width:250}} source={require("../../assets/noFav.png")}/><Text style={tailwind`text-[${theme.text}]`}>No Favourites</Text></View>:<Recepies recepie={userFav} Icon={<XMarkIcon color={'gray'}  size={20}/>}/>}
     </ScrollView>
   )
 }
