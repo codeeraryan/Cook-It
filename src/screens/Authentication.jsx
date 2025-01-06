@@ -57,6 +57,7 @@ const Authentication = ({navigation}) => {
                   style={tailwind ` border-b-gray-500 m-1 border-b-[1px]`}
                   placeholder='Email' onChangeText={(e)=>SetEmail(e)} placeholderTextColor={'rgb(189, 189, 189)'}/>
                   <TextInput
+                
                   style={tailwind ` border-b-gray-500 m-1 border-b-[1px]`}
                   placeholder='Password' onChangeText={(e)=>SetPass(e)} placeholderTextColor={'rgb(189, 189, 189)'}/></View>
                 <Pressable
@@ -74,10 +75,12 @@ const Authentication = ({navigation}) => {
                   placeholder='Set Email'  placeholderTextColor={'rgb(189, 189, 189)'}/>
                   <TextInput
                   onChangeText={(e)=>{SetPass(e)}}
+                  secureTextEntry={true}
                   style={tailwind ` border-b-gray-500 m-1 border-b-[1px]`}
                   placeholder='Set Password' placeholderTextColor={'rgb(189, 189, 189)'}/>
                   <TextInput
                   style={tailwind ` border-b-gray-500 m-1 border-b-[1px]`}
+                  secureTextEntry={true}
                   placeholder='Confirm Password'  placeholderTextColor={'rgb(189, 189, 189)'}/></View>
                 <Pressable
                 onPress={()=>handleRegister()}

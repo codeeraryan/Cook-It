@@ -9,7 +9,8 @@ import Categories from '../components/categories';
 import axios from 'axios';
 import Recepies  from '../components/recepies';
 import { useTheme } from '../context/ThemeContext';
-import { useFirebase } from '../context/FirebaseContext';
+
+
 
 export default function Homescreen({navigation}) {  
   const [cat,setCat]=useState('Beef');
@@ -22,6 +23,8 @@ export default function Homescreen({navigation}) {
   
   // useEffect(()=>userEmail?null:navigation.replace("Auth"),[userEmail])
   useEffect(()=>{getCategories(),getRecepies(cat)},[cat])
+
+   
 
   const getCategories=async()=>{
     try{

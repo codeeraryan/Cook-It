@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {DarkTheme, NavigationContainer } from '@react-navigation/native';
+import {DarkTheme, NavigationContainer ,DefaultTheme} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Homescreen from '../screens/Homescreen';
 import Welcome from '../screens/Welcome';
@@ -11,14 +11,18 @@ import MyProfile from '../screens/MyProfile'
 import { useFirebase } from '../context/FirebaseContext';
 import Favourites from '../screens/Favourites';
 import SearchedItem from '../screens/SearchedItem';
+import { useTheme } from '../context/ThemeContext';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 const Stack=createNativeStackNavigator();
 
  const AppNavigation=()=> {
  
+ 
   return (
-   <NavigationContainer  >
-    <Stack.Navigator initialRouteName='Splash'  screenOptions={{headerShown:false,animation:'slide_from_bottom'}}>
-        <Stack.Screen  name='Home' component={Homescreen}/>
+   
+   <NavigationContainer>
+    <Stack.Navigator  initialRouteName='Splash'  screenOptions={{headerShown:false,animation:'slide_from_bottom'}}>
+        <Stack.Screen name='Home' component={Homescreen}/>
         <Stack.Screen name='Splash' component={Welcome}/>
         <Stack.Screen name='RecepieDetails' component={RecepieDetails}/>
         <Stack.Screen name='Profile' component={Profile}/>
@@ -28,6 +32,7 @@ const Stack=createNativeStackNavigator();
         <Stack.Screen name='SearchedItem' component={SearchedItem}/>
     </Stack.Navigator>
    </NavigationContainer>
+  
   )
 }
 export default AppNavigation
