@@ -17,6 +17,7 @@ const Authentication = ({navigation}) => {
   const [active, setActive] = useState(true);
  const {registerUser,loginUser,email,SetEmail,Pass,SetPass,userEmail}=useFirebase();
 
+     
   
     const handleRegister=()=>{
       registerUser(email,Pass,navigation);
@@ -26,6 +27,9 @@ const Authentication = ({navigation}) => {
       loginUser(email,Pass,navigation);
       
     }
+
+     
+
   return (
     <SafeAreaView style={{
       paddingTop: insets.top,

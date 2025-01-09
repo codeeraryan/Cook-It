@@ -6,13 +6,27 @@ import { StatusBar } from 'expo-status-bar'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Animated,{useSharedValue,withSpring} from 'react-native-reanimated';
 import { useFirebase } from '../context/FirebaseContext'
-
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function Welcome({navigation}) {
-const {userEmail}=useFirebase();
+const {userEmail,setUserEmail}=useFirebase();
 const ring1padding=useSharedValue(0);
 const ring2padding=useSharedValue(0);
+
+
+
   useEffect(()=>{
+    const loadUserFromStorage = async () => {
+      try {
+        const storedUser = await AsyncStorage.getItem('user');
+        if (storedUser) {
+          setUserEmail(JSON.parse(storedUser)); // Restore the user's state
+        }
+      } catch (error) {
+        console.error('Failed to load user from storage:', error);
+      } 
+    };
+    loadUserFromStorage();
     setTimeout(() => {  ring1padding.value=withSpring(ring1padding.value+hp(5)) },100);
     setTimeout(() => {  ring2padding.value=withSpring(ring2padding.value+hp(5.5)) },300);
    userEmail? setTimeout(() => {  navigation.navigate("Home") },2500):setTimeout(() => {  navigation.navigate("Auth") },2500);

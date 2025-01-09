@@ -9,7 +9,7 @@ import Categories from '../components/categories';
 import axios from 'axios';
 import Recepies  from '../components/recepies';
 import { useTheme } from '../context/ThemeContext';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function Homescreen({navigation}) {  
@@ -21,11 +21,10 @@ export default function Homescreen({navigation}) {
  
   const {isDark,setIsDark,toggleSetTheme,theme,profileImage,userEmail,userDetail}=useTheme();
   
+
   // useEffect(()=>userEmail?null:navigation.replace("Auth"),[userEmail])
   useEffect(()=>{getCategories(),getRecepies(cat)},[cat])
-
-   
-
+  
   const getCategories=async()=>{
     try{
       const response =await axios.get('https://themealdb.com/api/json/v1/1/categories.php')
